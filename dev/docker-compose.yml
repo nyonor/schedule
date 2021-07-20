@@ -1,0 +1,24 @@
+version: '3.9'
+
+services: 
+
+    static:
+        image: 'nginx:1.21.1-alpine'
+        ports: 
+            - '8080:80'
+        volumes: 
+            - '/home/cadistortion/projects/node/schedule/dev/frontend/build/:/usr/share/nginx/html/'
+        depends_on: 
+            - express
+
+    express:
+        image: 'node:14.17.3-alpine'
+        build: '/home/cadistortion/projects/node/schedule/dev/backend/docker/Dockerfile'
+        working_dir: '/home/node/app'
+        volumes: 
+            - '/home/cadistortion/projects/node/schedule/dev/backend/:/home/node/app'
+        expose: 
+            - '3000'
+        ports: 
+            - '3001:3000'
+        command: 'npm start'
