@@ -4,7 +4,9 @@
   "description": "Day schedule application",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start_dev": "cd dev; docker-compose up -d;",
+    "restart_dev": "cd dev; docker-compose down; docker-compose up -d",
+    "stop_dev": "cd dev; docker-compose down"
   },
   "repository": {
     "type": "git",
