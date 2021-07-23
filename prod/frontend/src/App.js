@@ -40,7 +40,7 @@ function App() {
           {
             backendOnline ?
               <h3>
-                Backend ONLINE {backendLastResponse}
+                Backend ONLINE! {backendLastResponse}
               </h3>
               :
               <h3>

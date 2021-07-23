@@ -1,0 +1,27 @@
+version: '3.9'
+
+services: 
+
+    nginx:
+        image: 'nginx:1.21.1-alpine'
+        ports: 
+            - '8080:80'
+        expose: 
+            - '80'
+        build: './frontend/docker/'
+        volumes: 
+            - './frontend/build/:/usr/share/nginx/html/'
+        depends_on: 
+            - express
+
+    express:
+        image: 'node:14.17.3-alpine'
+        build: './backend/docker/'
+        working_dir: '/home/node/app'
+        volumes: 
+            - './backend/:/home/node/app'
+        expose: 
+            - '80'
+        ports: 
+            - '8081:80'
+        command: 'npx nodemon index.js'
