@@ -21,7 +21,7 @@ services:
         volumes: 
             - './backend/:/home/node/app'
         expose: 
-            - '3000'
+            - '80'
         ports: 
-            - '3001:3000'
-        command: 'npm start'
+            - '8081:80'
+        command: 'npx nodemon index.js'
