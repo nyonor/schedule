@@ -1,11 +1,16 @@
-const express = require('express')
-const app = express()
-const port = 80
+var express = require('express')
+var fs = require('fs')
+var https = require('https')
+var app = express()
 
-app.get('/', (req, res) => {
-  res.contentType('html').send('API is OKAY!!!!');
+app.get('/', function (req, res) {
+  res.send('hello world')
 })
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+https.createServer({
+  key: fs.readFileSync('./localhost.key'),
+  cert: fs.readFileSync('./localhost.crt')
+}, app)
+.listen(4431, function () {
+  console.log('Example app listening on port 4431! Go to https://localhost:4431/')
 })

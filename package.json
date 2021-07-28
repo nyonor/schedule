@@ -6,6 +6,7 @@
   "scripts": {
     "start_dev": "cd dev; docker-compose up -d;",
     "restart_dev": "cd dev; docker-compose down; docker-compose up -d",
+    "rebuild_dev": "cd dev; docker-compose down; docker-compose up -d --build",
     "stop_dev": "cd dev; docker-compose down"
   },
   "repository": {

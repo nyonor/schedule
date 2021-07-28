@@ -6,14 +6,14 @@ import './App.css';
 function App() {
 
   return (
-    <body>
+    <>
       <Header></Header>
       <div class="container-fluid">
         <div class="row">
           <Main></Main>
         </div>
       </div>
-    </body>
+    </>
   );
 }
 

@@ -5,9 +5,10 @@ services:
     frontend:
         build: './frontend'
         ports: 
-            - '8081:3000'
+            - '3001:3000'
         expose: 
             - '3000'
+            - '443'
         volumes: 
             - './frontend/:/var/www/html/'
         depends_on:
@@ -20,17 +21,19 @@ services:
         volumes: 
             - './backend/:/home/node/app'
         expose: 
-            - '80'
+            - '4431'
+            - '3000'
         ports: 
-            - '8082:80'
+            - '4431:4431'
         command: 'npx nodemon index.js'
 
     nginx:
         image: 'nginx:1.21.1-alpine'
         ports: 
-            - '8080:80'
+            - '4432:443'
         expose: 
             - '80'
+            - '443'
         build: './nginx/'
         volumes: 
             - './frontend/build/:/usr/share/nginx/html/'
