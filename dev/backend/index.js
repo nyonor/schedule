@@ -1,16 +1,13 @@
-var express = require('express')
-var fs = require('fs')
-var https = require('https')
-var app = express()
+const app = require ("./app/app.js");
+const server = require("./server/server.js");
 
-app.get('/', function (req, res) {
-  res.send('hello world')
-})
+// routes
+const home = require('./routes/home.routes');
+const user = require('./routes/user.routes');
 
-https.createServer({
-  key: fs.readFileSync('./localhost.key'),
-  cert: fs.readFileSync('./localhost.crt')
-}, app)
-.listen(4431, function () {
-  console.log('Example app listening on port 4431! Go to https://localhost:4431/')
-})
+app.use('/', home);
+app.use('/user', user);
+
+// server
+const httpsServer = server.create(app);
+server.start(httpsServer);

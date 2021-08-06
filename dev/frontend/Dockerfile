@@ -1,6 +1,6 @@
-FROM alpine:edge
+FROM alpine:3.14
 ENV CONTENTDIR='/var/www/html'
-RUN apk add --update nodejs=14.17.3-r0 \
+RUN apk add --update nodejs=14.17.4-r0 \
     && apk add --update npm
 RUN mkdir -p ${CONTENTDIR}
 COPY . ${CONTENTDIR}

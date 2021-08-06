@@ -15,7 +15,7 @@ services:
             - backend
 
     backend:
-        image: 'node:14.17.3-alpine'
+        image: 'node:14.17.4-alpine'
         build: './backend/docker/'
         working_dir: '/home/node/app'
         volumes: 
